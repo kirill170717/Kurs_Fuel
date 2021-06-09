@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="08978ed6be9c4632ab812c21ab105855" Name="Diagram1">
+        <EntityTypeShape EntityType="gr691_tkpModel.K_AVGCalculations" Width="1.5" PointX="5.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr691_tkpModel.K_CostCalculations" Width="1.5" PointX="8.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr691_tkpModel.K_DistanceCalculations" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr691_tkpModel.K_Role" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr691_tkpModel.K_TypeFuel" Width="1.5" PointX="6" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr691_tkpModel.K_Users" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="gr691_tkpModel.FK__K_AVGCalc__FK_Us__4D7F7902" ManuallyRouted="false" />
+        <AssociationConnector Association="gr691_tkpModel.FK__K_CostCal__FK_Ty__515009E6" ManuallyRouted="false" />
+        <AssociationConnector Association="gr691_tkpModel.FK__K_CostCal__FK_Us__505BE5AD" ManuallyRouted="false" />
+        <AssociationConnector Association="gr691_tkpModel.FK__K_Distanc__FK_Us__4AA30C57" ManuallyRouted="false" />
+        <AssociationConnector Association="gr691_tkpModel.FK__K_Users__FK_Role__47C69FAC" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

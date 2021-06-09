@@ -1,0 +1,58 @@
+﻿<Window x:Class="Kurs_Oil.Administrator"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kurs_Oil"
+        mc:Ignorable="d"
+        Title="" Height="545" Width="970" WindowStartupLocation="CenterScreen" Icon="Картинки/Канистра.png" Foreground="Black" Background="Black">
+    <Grid>
+        <Image gif:ImageBehavior.AnimatedSource="Картинки/car-driving-77.gif" Stretch="Fill" Opacity="0.5"/>
+        <DataGrid Name="Type_fuel" HorizontalAlignment="Left" AutoGenerateColumns="False" Height="369" VerticalAlignment="Top" Width="395" Background="#99FAFAFA">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Type}" Header="Тип топлива" Width="*" />
+                <DataGridTextColumn Binding="{Binding Price}" Header="Цена за литр" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <ComboBox Name="UpTypeF" HorizontalAlignment="Left" VerticalAlignment="Top" materialDesign:HintAssist.Hint="Тип топлива" DisplayMemberPath="Type" Width="165" Margin="230,374,0,0" Foreground="White" BorderBrush="White" FontSize="24" Height="40">
+            <ComboBox.ItemContainerStyle>
+                <Style TargetType="ComboBoxItem">
+                    <Setter Property="Foreground" Value="Black"/>
+                </Style>
+            </ComboBox.ItemContainerStyle>
+        </ComboBox>
+        <TextBox Name="TypeF" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" materialDesign:HintAssist.Hint="Тип топлива" Margin="5,374,0,0" FontSize="24" Foreground="White" BorderBrush="White" HorizontalAlignment="Left" Width="170"/>
+        <TextBox Name="Price" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" materialDesign:HintAssist.Hint="Цена" Margin="10,419,0,0" FontSize="24" Foreground="White" BorderBrush="White" HorizontalAlignment="Left" Width="165"/>
+        <Button Content="Добавить" VerticalAlignment="Top" Margin="10,464,0,0" Click="Button_InsT" Height="40" HorizontalAlignment="Left" Width="150" Background="#00000000" FontSize="24" BorderBrush="#00673AB7" Foreground="#DD12F008"/>
+        <Button Content="Удалить" VerticalAlignment="Top" Margin="245,464,0,0" Click="Button_DelT" Height="40" HorizontalAlignment="Left" Width="150" Background="#00000000" FontSize="24" BorderBrush="#00673AB7" Foreground="#DDF52D19"/>
+        <Button Content="Изменить" VerticalAlignment="Top" Margin="245,419,0,0" Click="Button_UpdT" Height="40" HorizontalAlignment="Left" Width="150" Background="#00000000" FontSize="24" BorderBrush="#00673AB7"/>
+        <DataGrid Name="Users" HorizontalAlignment="Left" AutoGenerateColumns="False" Height="287" VerticalAlignment="Top" Width="562" Background="#99FAFAFA" Margin="400,227,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding K_Role.Role}" Header="Роль" Width="*" />
+                <DataGridTextColumn Binding="{Binding Login}" Header="Логин" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Password}" Header="Пароль" Width="*" />
+                <DataGridTextColumn Binding="{Binding LastName}" Header="Фамилия" Width="*"/>
+                <DataGridTextColumn Binding="{Binding FirstName}" Header="Имя" Width="*" />
+                <DataGridTextColumn Binding="{Binding MiddleName}" Header="Отчество" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox Name="Login" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" materialDesign:HintAssist.Hint="Логин" Margin="405,2,0,0" FontSize="24" Foreground="White" BorderBrush="White" HorizontalAlignment="Left" Width="220"/>
+        <PasswordBox Name="Password" VerticalAlignment="Top" materialDesign:HintAssist.Hint="Пароль" Margin="405,47,0,0" Height="40" FontSize="24" BorderBrush="White" Foreground="White" HorizontalAlignment="Left" Width="220"/>
+        <TextBox Name="SName" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Фамилию" Margin="405,92,0,0" FontSize="24" BorderBrush="White" Foreground="White"/>
+        <TextBox Name="FName" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Имя" Margin="405,137,0,0" FontSize="24" BorderBrush="White" Foreground="White"/>
+        <TextBox Name="MName" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Отчество" Margin="405,182,0,0" FontSize="24" Foreground="White" BorderBrush="White"/>
+        <ComboBox Name="UpLogin" HorizontalAlignment="Left" VerticalAlignment="Top" materialDesign:HintAssist.Hint="Логин" DisplayMemberPath="Login" Width="165" Margin="787,92,0,0" Foreground="White" BorderBrush="White" FontSize="24" Height="40">
+            <ComboBox.ItemContainerStyle>
+                <Style TargetType="ComboBoxItem">
+                    <Setter Property="Foreground" Value="Black"/>
+                </Style>
+            </ComboBox.ItemContainerStyle>
+        </ComboBox>
+        <Button Content="Добавить" VerticalAlignment="Top" Margin="630,2,0,0" Click="Button_InsU" Height="40" HorizontalAlignment="Left" Width="150" Background="#00000000" FontSize="24" BorderBrush="#00673AB7" Foreground="#DD12F008"/>
+        <Button Content="Удалить" VerticalAlignment="Top" Margin="802,182,0,0" Click="Button_DelU" Height="40" HorizontalAlignment="Left" Width="150" Background="#00000000" FontSize="24" BorderBrush="#00673AB7" Foreground="#DDF52D19"/>
+        <Button Content="Изменить" VerticalAlignment="Top" Margin="802,137,0,0" Click="Button_UpdU" Height="40" HorizontalAlignment="Left" Width="150" Background="#00000000" FontSize="24" BorderBrush="#00673AB7"/>
+        <Button Content="Выход" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Margin="852,0,0,0" Click="Button_Exit" Height="40" Background="#00F50505" FontSize="24" BorderBrush="#00673AB7" RenderTransformOrigin="0.078,0.458" Foreground="#DDF52D19"/>
+    </Grid>
+</Window>

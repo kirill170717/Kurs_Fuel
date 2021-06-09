@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище gr691_tkpModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="K_AVGCalculations">
+          <Key>
+            <PropertyRef Name="AVGCalculation_Id" />
+          </Key>
+          <Property Name="AVGCalculation_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_User_Id" Type="int" Nullable="false" />
+          <Property Name="Filled" Type="float" Nullable="false" />
+          <Property Name="Passed" Type="float" Nullable="false" />
+          <Property Name="Results" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="K_CostCalculations">
+          <Key>
+            <PropertyRef Name="CCalculation_Id" />
+          </Key>
+          <Property Name="CCalculation_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_User_Id" Type="int" Nullable="false" />
+          <Property Name="Distance" Type="float" Nullable="false" />
+          <Property Name="Consuption" Type="float" Nullable="false" />
+          <Property Name="FK_Type_Id" Type="int" Nullable="false" />
+          <Property Name="ResultsL" Type="float" Nullable="false" />
+          <Property Name="ResultsC" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="K_DistanceCalculations">
+          <Key>
+            <PropertyRef Name="DCalculation_Id" />
+          </Key>
+          <Property Name="DCalculation_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_User_Id" Type="int" Nullable="false" />
+          <Property Name="Consuption" Type="float" Nullable="false" />
+          <Property Name="Filled" Type="float" Nullable="false" />
+          <Property Name="Results" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="K_Role">
+          <Key>
+            <PropertyRef Name="Role_Id" />
+          </Key>
+          <Property Name="Role_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="K_TypeFuel">
+          <Key>
+            <PropertyRef Name="Type_Id" />
+          </Key>
+          <Property Name="Type_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="K_Users">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="User_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_Role_Id" Type="int" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__K_AVGCalc__FK_Us__4D7F7902">
+          <End Role="K_Users" Type="Self.K_Users" Multiplicity="1" />
+          <End Role="K_AVGCalculations" Type="Self.K_AVGCalculations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="K_Users">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="K_AVGCalculations">
+              <PropertyRef Name="FK_User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__K_CostCal__FK_Ty__515009E6">
+          <End Role="K_TypeFuel" Type="Self.K_TypeFuel" Multiplicity="1" />
+          <End Role="K_CostCalculations" Type="Self.K_CostCalculations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="K_TypeFuel">
+              <PropertyRef Name="Type_Id" />
+            </Principal>
+            <Dependent Role="K_CostCalculations">
+              <PropertyRef Name="FK_Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__K_CostCal__FK_Us__505BE5AD">
+          <End Role="K_Users" Type="Self.K_Users" Multiplicity="1" />
+          <End Role="K_CostCalculations" Type="Self.K_CostCalculations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="K_Users">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="K_CostCalculations">
+              <PropertyRef Name="FK_User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__K_Distanc__FK_Us__4AA30C57">
+          <End Role="K_Users" Type="Self.K_Users" Multiplicity="1" />
+          <End Role="K_DistanceCalculations" Type="Self.K_DistanceCalculations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="K_Users">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="K_DistanceCalculations">
+              <PropertyRef Name="FK_User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__K_Users__FK_Role__47C69FAC">
+          <End Role="K_Role" Type="Self.K_Role" Multiplicity="1" />
+          <End Role="K_Users" Type="Self.K_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="K_Role">
+              <PropertyRef Name="Role_Id" />
+            </Principal>
+            <Dependent Role="K_Users">
+              <PropertyRef Name="FK_Role_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище gr691_tkpModelContainer">
+          <EntitySet Name="K_AVGCalculations" EntityType="Self.K_AVGCalculations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="K_CostCalculations" EntityType="Self.K_CostCalculations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="K_DistanceCalculations" EntityType="Self.K_DistanceCalculations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="K_Role" EntityType="Self.K_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="K_TypeFuel" EntityType="Self.K_TypeFuel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="K_Users" EntityType="Self.K_Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__K_AVGCalc__FK_Us__4D7F7902" Association="Self.FK__K_AVGCalc__FK_Us__4D7F7902">
+            <End Role="K_Users" EntitySet="K_Users" />
+            <End Role="K_AVGCalculations" EntitySet="K_AVGCalculations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__K_CostCal__FK_Ty__515009E6" Association="Self.FK__K_CostCal__FK_Ty__515009E6">
+            <End Role="K_TypeFuel" EntitySet="K_TypeFuel" />
+            <End Role="K_CostCalculations" EntitySet="K_CostCalculations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__K_CostCal__FK_Us__505BE5AD" Association="Self.FK__K_CostCal__FK_Us__505BE5AD">
+            <End Role="K_Users" EntitySet="K_Users" />
+            <End Role="K_CostCalculations" EntitySet="K_CostCalculations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__K_Distanc__FK_Us__4AA30C57" Association="Self.FK__K_Distanc__FK_Us__4AA30C57">
+            <End Role="K_Users" EntitySet="K_Users" />
+            <End Role="K_DistanceCalculations" EntitySet="K_DistanceCalculations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__K_Users__FK_Role__47C69FAC" Association="Self.FK__K_Users__FK_Role__47C69FAC">
+            <End Role="K_Role" EntitySet="K_Role" />
+            <End Role="K_Users" EntitySet="K_Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="gr691_tkpModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="K_AVGCalculations">
+          <Key>
+            <PropertyRef Name="AVGCalculation_Id" />
+          </Key>
+          <Property Name="AVGCalculation_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_User_Id" Type="Int32" Nullable="false" />
+          <Property Name="Filled" Type="Double" Nullable="false" />
+          <Property Name="Passed" Type="Double" Nullable="false" />
+          <Property Name="Results" Type="Double" Nullable="false" />
+          <NavigationProperty Name="K_Users" Relationship="Self.FK__K_AVGCalc__FK_Us__4D7F7902" FromRole="K_AVGCalculations" ToRole="K_Users" />
+        </EntityType>
+        <EntityType Name="K_CostCalculations">
+          <Key>
+            <PropertyRef Name="CCalculation_Id" />
+          </Key>
+          <Property Name="CCalculation_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_User_Id" Type="Int32" Nullable="false" />
+          <Property Name="Distance" Type="Double" Nullable="false" />
+          <Property Name="Consuption" Type="Double" Nullable="false" />
+          <Property Name="FK_Type_Id" Type="Int32" Nullable="false" />
+          <Property Name="ResultsL" Type="Double" Nullable="false" />
+          <Property Name="ResultsC" Type="Double" Nullable="false" />
+          <NavigationProperty Name="K_TypeFuel" Relationship="Self.FK__K_CostCal__FK_Ty__515009E6" FromRole="K_CostCalculations" ToRole="K_TypeFuel" />
+          <NavigationProperty Name="K_Users" Relationship="Self.FK__K_CostCal__FK_Us__505BE5AD" FromRole="K_CostCalculations" ToRole="K_Users" />
+        </EntityType>
+        <EntityType Name="K_DistanceCalculations">
+          <Key>
+            <PropertyRef Name="DCalculation_Id" />
+          </Key>
+          <Property Name="DCalculation_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_User_Id" Type="Int32" Nullable="false" />
+          <Property Name="Consuption" Type="Double" Nullable="false" />
+          <Property Name="Filled" Type="Double" Nullable="false" />
+          <Property Name="Results" Type="Double" Nullable="false" />
+          <NavigationProperty Name="K_Users" Relationship="Self.FK__K_Distanc__FK_Us__4AA30C57" FromRole="K_DistanceCalculations" ToRole="K_Users" />
+        </EntityType>
+        <EntityType Name="K_Role">
+          <Key>
+            <PropertyRef Name="Role_Id" />
+          </Key>
+          <Property Name="Role_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="K_Users" Relationship="Self.FK__K_Users__FK_Role__47C69FAC" FromRole="K_Role" ToRole="K_Users" />
+        </EntityType>
+        <EntityType Name="K_TypeFuel">
+          <Key>
+            <PropertyRef Name="Type_Id" />
+          </Key>
+          <Property Name="Type_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="K_CostCalculations" Relationship="Self.FK__K_CostCal__FK_Ty__515009E6" FromRole="K_TypeFuel" ToRole="K_CostCalculations" />
+        </EntityType>
+        <EntityType Name="K_Users">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="User_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_Role_Id" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="K_AVGCalculations" Relationship="Self.FK__K_AVGCalc__FK_Us__4D7F7902" FromRole="K_Users" ToRole="K_AVGCalculations" />
+          <NavigationProperty Name="K_CostCalculations" Relationship="Self.FK__K_CostCal__FK_Us__505BE5AD" FromRole="K_Users" ToRole="K_CostCalculations" />
+          <NavigationProperty Name="K_DistanceCalculations" Relationship="Self.FK__K_Distanc__FK_Us__4AA30C57" FromRole="K_Users" ToRole="K_DistanceCalculations" />
+          <NavigationProperty Name="K_Role" Relationship="Self.FK__K_Users__FK_Role__47C69FAC" FromRole="K_Users" ToRole="K_Role" />
+        </EntityType>
+        <Association Name="FK__K_AVGCalc__FK_Us__4D7F7902">
+          <End Role="K_Users" Type="Self.K_Users" Multiplicity="1" />
+          <End Role="K_AVGCalculations" Type="Self.K_AVGCalculations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="K_Users">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="K_AVGCalculations">
+              <PropertyRef Name="FK_User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__K_CostCal__FK_Ty__515009E6">
+          <End Role="K_TypeFuel" Type="Self.K_TypeFuel" Multiplicity="1" />
+          <End Role="K_CostCalculations" Type="Self.K_CostCalculations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="K_TypeFuel">
+              <PropertyRef Name="Type_Id" />
+            </Principal>
+            <Dependent Role="K_CostCalculations">
+              <PropertyRef Name="FK_Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__K_CostCal__FK_Us__505BE5AD">
+          <End Role="K_Users" Type="Self.K_Users" Multiplicity="1" />
+          <End Role="K_CostCalculations" Type="Self.K_CostCalculations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="K_Users">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="K_CostCalculations">
+              <PropertyRef Name="FK_User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__K_Distanc__FK_Us__4AA30C57">
+          <End Role="K_Users" Type="Self.K_Users" Multiplicity="1" />
+          <End Role="K_DistanceCalculations" Type="Self.K_DistanceCalculations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="K_Users">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="K_DistanceCalculations">
+              <PropertyRef Name="FK_User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__K_Users__FK_Role__47C69FAC">
+          <End Role="K_Role" Type="Self.K_Role" Multiplicity="1" />
+          <End Role="K_Users" Type="Self.K_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="K_Role">
+              <PropertyRef Name="Role_Id" />
+            </Principal>
+            <Dependent Role="K_Users">
+              <PropertyRef Name="FK_Role_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="gr691_tkpEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="K_AVGCalculations" EntityType="Self.K_AVGCalculations" />
+          <EntitySet Name="K_CostCalculations" EntityType="Self.K_CostCalculations" />
+          <EntitySet Name="K_DistanceCalculations" EntityType="Self.K_DistanceCalculations" />
+          <EntitySet Name="K_Role" EntityType="Self.K_Role" />
+          <EntitySet Name="K_TypeFuel" EntityType="Self.K_TypeFuel" />
+          <EntitySet Name="K_Users" EntityType="Self.K_Users" />
+          <AssociationSet Name="FK__K_AVGCalc__FK_Us__4D7F7902" Association="Self.FK__K_AVGCalc__FK_Us__4D7F7902">
+            <End Role="K_Users" EntitySet="K_Users" />
+            <End Role="K_AVGCalculations" EntitySet="K_AVGCalculations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__K_CostCal__FK_Ty__515009E6" Association="Self.FK__K_CostCal__FK_Ty__515009E6">
+            <End Role="K_TypeFuel" EntitySet="K_TypeFuel" />
+            <End Role="K_CostCalculations" EntitySet="K_CostCalculations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__K_CostCal__FK_Us__505BE5AD" Association="Self.FK__K_CostCal__FK_Us__505BE5AD">
+            <End Role="K_Users" EntitySet="K_Users" />
+            <End Role="K_CostCalculations" EntitySet="K_CostCalculations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__K_Distanc__FK_Us__4AA30C57" Association="Self.FK__K_Distanc__FK_Us__4AA30C57">
+            <End Role="K_Users" EntitySet="K_Users" />
+            <End Role="K_DistanceCalculations" EntitySet="K_DistanceCalculations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__K_Users__FK_Role__47C69FAC" Association="Self.FK__K_Users__FK_Role__47C69FAC">
+            <End Role="K_Role" EntitySet="K_Role" />
+            <End Role="K_Users" EntitySet="K_Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище gr691_tkpModelContainer" CdmEntityContainer="gr691_tkpEntities">
+          <EntitySetMapping Name="K_AVGCalculations">
+            <EntityTypeMapping TypeName="gr691_tkpModel.K_AVGCalculations">
+              <MappingFragment StoreEntitySet="K_AVGCalculations">
+                <ScalarProperty Name="AVGCalculation_Id" ColumnName="AVGCalculation_Id" />
+                <ScalarProperty Name="FK_User_Id" ColumnName="FK_User_Id" />
+                <ScalarProperty Name="Filled" ColumnName="Filled" />
+                <ScalarProperty Name="Passed" ColumnName="Passed" />
+                <ScalarProperty Name="Results" ColumnName="Results" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="K_CostCalculations">
+            <EntityTypeMapping TypeName="gr691_tkpModel.K_CostCalculations">
+              <MappingFragment StoreEntitySet="K_CostCalculations">
+                <ScalarProperty Name="CCalculation_Id" ColumnName="CCalculation_Id" />
+                <ScalarProperty Name="FK_User_Id" ColumnName="FK_User_Id" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Consuption" ColumnName="Consuption" />
+                <ScalarProperty Name="FK_Type_Id" ColumnName="FK_Type_Id" />
+                <ScalarProperty Name="ResultsL" ColumnName="ResultsL" />
+                <ScalarProperty Name="ResultsC" ColumnName="ResultsC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="K_DistanceCalculations">
+            <EntityTypeMapping TypeName="gr691_tkpModel.K_DistanceCalculations">
+              <MappingFragment StoreEntitySet="K_DistanceCalculations">
+                <ScalarProperty Name="DCalculation_Id" ColumnName="DCalculation_Id" />
+                <ScalarProperty Name="FK_User_Id" ColumnName="FK_User_Id" />
+                <ScalarProperty Name="Consuption" ColumnName="Consuption" />
+                <ScalarProperty Name="Filled" ColumnName="Filled" />
+                <ScalarProperty Name="Results" ColumnName="Results" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="K_Role">
+            <EntityTypeMapping TypeName="gr691_tkpModel.K_Role">
+              <MappingFragment StoreEntitySet="K_Role">
+                <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="K_TypeFuel">
+            <EntityTypeMapping TypeName="gr691_tkpModel.K_TypeFuel">
+              <MappingFragment StoreEntitySet="K_TypeFuel">
+                <ScalarProperty Name="Type_Id" ColumnName="Type_Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="K_Users">
+            <EntityTypeMapping TypeName="gr691_tkpModel.K_Users">
+              <MappingFragment StoreEntitySet="K_Users">
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="FK_Role_Id" ColumnName="FK_Role_Id" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
