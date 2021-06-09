@@ -11,7 +11,7 @@
         <Image Source="Картинки/Канистра.png" Margin="0,215,0,52"/>
         <Label Content="Авторизация" FontSize="48" Margin="10,10,0,0" HorizontalAlignment="Left" Width="300" Height="75" VerticalAlignment="Top" Foreground="White"/>
         <TextBox Name="Login" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Введите логин" Margin="10,85,0,0" HorizontalAlignment="Left" Width="300" Height="40" VerticalAlignment="Top" Foreground="White" BorderBrush="Black" FontSize="24"/>
-        <PasswordBox Name="Password" materialDesign:HintAssist.Hint="Введите пароль" Margin="10,130,10,0" Height="40" VerticalAlignment="Top" BorderBrush="Black" FontSize="24" Foreground="White"/>
+        <PasswordBox Name="Password" materialDesign:HintAssist.Hint="Введите пароль" KeyDown="Auth_KeyDown" Margin="10,130,10,0" Height="40" VerticalAlignment="Top" BorderBrush="Black" FontSize="24" Foreground="White"/>
         <Button Content="Войти" Margin="10,175,10,0" Click="Button_Auth" Height="40" VerticalAlignment="Top" Background="#000068FF" BorderBrush="#00673AB7" Foreground="White" FontSize="24" RenderTransformOrigin="0.321,0.564"/>
         <Button Content="Регистрация" Margin="10,369,10,0" Click="Button_Reg" Height="40" FontSize="24" VerticalAlignment="Top" Background="#000068FF" BorderBrush="#00673AB7" Foreground="White"/>
     </Grid>

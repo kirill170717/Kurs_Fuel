@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kurs_Oil"
         mc:Ignorable="d"
-        Title="Регистрация" Height="357.646" Width="654" WindowStartupLocation="CenterScreen" Background="#FF2969B0" Icon="Картинки/Канистра.png">
+        Title="" Height="357.646" Width="654" WindowStartupLocation="CenterScreen" Background="#FF2969B0" Icon="Картинки/Канистра.png">
     <Grid>
         <Label Content="Регистрация" FontSize="48" VerticalAlignment="Top" Margin="185,5,0,0" Height="75" Foreground="White" HorizontalAlignment="Left" Width="282"/>
         <TextBox Name="Login" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" materialDesign:HintAssist.Hint="Введите логин" Margin="10,85,0,0" FontSize="24" Foreground="White" BorderBrush="White" HorizontalAlignment="Left" Width="300"/>

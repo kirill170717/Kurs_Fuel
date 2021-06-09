@@ -29,6 +29,18 @@ namespace Kurs_Oil
                 Close();
             }
         }
+        private void Auth_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Auth auth = new Auth();
+                bool close = auth.Button_Auth(Login.Text, Password.Password);
+                if (close)
+                {
+                    Close();
+                }
+            }
+        }
         private void Button_Reg(object sender, RoutedEventArgs e)
         {
             Registration reg = new Registration();
