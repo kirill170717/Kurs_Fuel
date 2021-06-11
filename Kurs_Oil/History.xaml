@@ -7,7 +7,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kurs_Oil"
         mc:Ignorable="d"
-        Title="История" ResizeMode="CanMinimize" Height="900" Width="1613" WindowStartupLocation="CenterScreen" Background="Black">
+        Title="История" ResizeMode="CanMinimize" Height="900" Width="1613" WindowStartupLocation="CenterScreen" Background="Black" Icon="Картинки/Канистра.png">
     <Grid>
         <Image gif:ImageBehavior.AnimatedSource="Картинки/car-driving-77.gif" Stretch="Fill" Opacity="0.5"/>
         <Label Content="Средний расход топлива" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontSize="24" Margin="10,65,0,0"/>
